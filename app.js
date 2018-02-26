@@ -8,12 +8,16 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var about = require('./routes/about'); //import the about page
+var signup = require('./routes/signup'); 
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+//const bodyParser = require('body-parser');defined above
+//app.use(bodyParser.urlencoded({ extended: true }));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -26,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/about', about); //use the about page
+app.use('/signup', signup);
 
 
 // catch 404 and forward to error handler

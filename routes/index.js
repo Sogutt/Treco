@@ -10,8 +10,14 @@ router.get('/', function(req, res, next) {
 });
 
 var request = require("request");
+//The GET method should only be used for forms that don't change user data (e.g. a search form).
 
-var options = { method: 'GET',
+
+app.post('/index', function (req, res) {
+    res.render('the_template', { name: req.body.name });
+});
+
+/*var options = { method: 'GET',
   url: 'https://api.fixer.io/latest',
   headers: 
    { 'Postman-Token': '4d69c967-f410-4f43-8a14-04f43abdfd93',
@@ -22,6 +28,6 @@ request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
   console.log(body);
-});
+}); */
 
 module.exports = router;

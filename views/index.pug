@@ -1,5 +1,19 @@
-extends layout
+doctype html
+html(lang="en")
+p Welcome to #{title}
 
-block content
-  h1= title
-  p Welcome to #{title}
+
+  head
+    title= pageTitle
+    script(type='text/javascript').
+      if (foo) bar(1 + 5)
+  body
+    form(action='/index.js', method='GET') 
+    p
+      | Destination: 
+      input(type='text', name='Destination', value='')
+      |          Budget: 
+      input(type='text', name='Budget', value='')
+      |          Days: 
+      input(type='text', name='Days', value='')
+    input(type='submit', value='Submit')
