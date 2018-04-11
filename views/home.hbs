@@ -1,0 +1,48 @@
+<h1> Welcome to Treco </h1>
+<div class="page-header">
+<h3>Enter at least 2 parameters</h3>
+</div>
+<div class="Search">
+<h4>Discover Our World</h4>
+<form class="formSearch" role="form"
+  action="/process?form=searchQuery" method="POST">
+ 
+  <input type="hidden" name="_csrf" value="{{csrf}}">
+ 
+  <div class="form-group">
+    <label for="fieldDest" class="col-sm-2 control-label">
+    Destination</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fieldEmail"
+      name="Dest">
+    </div>
+  </div> <!-- End of form-group -->
+ 
+  <div class="form-group">
+    <label for="fieldQues" class="col-sm-2 control-label">
+    Budget</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fieldQues"
+      name="Budget">
+    </div>
+  </div> <!-- End of form-group -->
+ 
+  <div class="form-group">
+    <label for="fieldQues" class="col-sm-2 control-label">
+    Days</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fieldQues"
+      name="Days">
+    </div>
+  </div> <!-- End of form-group -->
+ 
+  <div class="form-group">
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </div> <!-- End of form-group -->
+ 
+</form>
+ 
+</div> <!-- End of contactUs -->
+ 

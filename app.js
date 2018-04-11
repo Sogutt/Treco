@@ -5,50 +5,73 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
+var home = require('./routes/home');
+var about = require('./routes/about');
 var users = require('./routes/users');
-var about = require('./routes/about'); //import the about page
-var signup = require('./routes/signup'); 
+//var ist = require('./routes/ist);
 
 var app = express();
+var mongo = require('mongodb');
 
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-//const bodyParser = require('body-parser');defined above
-//app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+app.use('/', home);
 app.use('/users', users);
-app.use('/about', about); //use the about page
-app.use('/signup', signup);
+app.use('/about', about);
+//app.use('/ist', ist);
 
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('You done messed up');
-  err.status = 404;
-  next(err);
+app.get('/', function(req,res){
+	res.render('home');
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.get('/about', function(req, res){//app.get is how we add routes. app.VERB --> app.post etc
+	res.render('about');
+});
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+var request = require("request");
+
+app.post('/process', function(req, res){
+		var dest = req.body.Dest;
+		if(dest == ''){
+			response = {
+				//Destination1 : req.query.form, searchQuery
+				Destination : req.body.Dest,
+				Budget : req.body.Budget,
+				Days : req.body.Days
+			};
+		};
+		
+		console.log(response);
+		res.end(JSON.stringify(response)); //renders JSON object in result page
+		//how to make the api call?
+});
+
+//404 page
+app.use(function(req, res){
+	res.type('text/plain');
+	res.status(404);
+	res.send('404 - Not Found - You done messed up A-Aron');
+});
+
+//500 page
+app.use(function(err, req, res, next){
+	res.type('text/plain');
+	res.status(500);
+	res.send('500 - Server Error - Server done messed up, my bad fam');
+});
+
+app.listen(app.get('port'), function(){
+	console.log('Treco Express Server started on http://localhost: ' + app.get('port'));
 });
 
 module.exports = app;
