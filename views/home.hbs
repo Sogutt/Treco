@@ -5,7 +5,7 @@
 <div class="Search">
 <h4>Discover Our World</h4>
 <form class="formSearch" role="form"
-  action="/process?form=searchQuery" method="POST">
+  action="/locations" method="POST">
  
   <input type="hidden" name="_csrf" value="{{csrf}}">
  
@@ -43,6 +43,9 @@
   </div> <!-- End of form-group -->
  
 </form>
+<p>
+	{{message}}
+	</p>
  
 </div> <!-- End of contactUs -->
  

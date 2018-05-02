@@ -34,9 +34,6 @@ app.get('/', function(req,res){
 	res.render('home');
 });
 
-app.get('/about', function(req, res){//app.get is how we add routes. app.VERB --> app.post etc
-	res.render('about');
-});
 
 var request = require("request");
 
