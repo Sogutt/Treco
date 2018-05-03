@@ -6,7 +6,11 @@ var thisLocale = mongoose.Schema({
 	name: String,
 	country: String,
 	tpi: Number,
-	inexpensive_meal: Number
+	avg_hotel_cost: Number,
+	avg_inexp_meal: Number,
+	dom_beer: Number,
+	imp_beer: Number
 });
 
 module.exports = mongoose.model('Locations', thisLocale);
+
