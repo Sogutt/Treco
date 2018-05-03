@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/locations', function(req, res, next) {
-	res.render('locations');
+	res.render('locations', {myLocations: [{name:"USA"},{name:"TURKEY"},{name:"LONDON"}]});
 });
 
 

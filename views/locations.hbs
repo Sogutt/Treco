@@ -1,16 +1,23 @@
 <style>
-	.wrapper {
+	.container {
 		display: grid;
+  		grid-template-columns: auto auto auto;
+  		grid-template-rows: 80px auto 80px; 
+  		grid-column-gap: 10px;
+ 		grid-row-gap: 15px;
+	}
+	.part {
+		background-color: #1A1A1D;
 	}
 </style>
 <p>Hey you guys.</p>
 
 <body>
 
-	<div>
-		{{#each this.name}}
-			<div>
-				Hi
+	<div class="container">
+		{{#each myLocations}}
+			<div class="part">
+				{{this.name}}
 			</div>
 		{{/each}}
 	</div>

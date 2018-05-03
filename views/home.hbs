@@ -1,24 +1,32 @@
+
+<style>
+	.bg {
+		background: url(../homePhoto2.jpg);
+		background-repeat: no-repeat;
+    	background-size:100% 50%;
+	}
+	.form {
+		margin-top: 200px;
+		margin-bottom: 170px;
+	}
+	.budget, .days {
+    	display: inline-block;
+    	margin: 0 auto;
+	}
+	
+</style>
+<body  class="bg">
+<div>
 <h1> Welcome to Treco </h1>
-<div class="page-header">
-<h3>Enter at least 2 parameters</h3>
-</div>
-<div class="Search">
 <h4>Discover Our World</h4>
+</div>
+<div class="form">
 <form class="formSearch" role="form"
   action="/locations" method="POST">
  
   <input type="hidden" name="_csrf" value="{{csrf}}">
  
-  <div class="form-group">
-    <label for="fieldDest" class="col-sm-2 control-label">
-    Destination</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="fieldEmail"
-      name="Dest">
-    </div>
-  </div> <!-- End of form-group -->
- 
-  <div class="form-group">
+  <div class="budget">
     <label for="fieldQues" class="col-sm-2 control-label">
     Budget</label>
     <div class="col-sm-4">
@@ -27,7 +35,7 @@
     </div>
   </div> <!-- End of form-group -->
  
-  <div class="form-group">
+  <div class="days">
     <label for="fieldQues" class="col-sm-2 control-label">
     Days</label>
     <div class="col-sm-4">
@@ -48,4 +56,4 @@
 	</p>
  
 </div> <!-- End of contactUs -->
- 
+</body>
