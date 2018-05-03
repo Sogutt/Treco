@@ -37,21 +37,6 @@ app.get('/', function(req,res){
 
 var request = require("request");
 
-/*app.post('/process', function(req, res){
-		var dest = req.body.Dest;
-		if(dest == ''){
-			response = {
-				//Destination1 : req.query.form, searchQuery
-				Destination : req.body.Dest,
-				Budget : req.body.Budget,
-				Days : req.body.Days
-			};
-		};
-		
-		console.log(response);
-		res.end(JSON.stringify(response)); //renders JSON object in result page
-		
-});*/
 
 //404 page
 app.use(function(req, res){
