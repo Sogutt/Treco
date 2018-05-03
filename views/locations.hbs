@@ -1,13 +1,35 @@
 <style>
 	.container {
 		display: grid;
-  		grid-template-columns: auto auto auto;
-  		grid-template-rows: 80px auto 80px; 
+  		grid-template-columns: 25em 25em 25em; 
+		grid-template-rows: 15em 15em 15em;
   		grid-column-gap: 10px;
  		grid-row-gap: 15px;
 	}
 	.part {
-		background-color: #1A1A1D;
+		background-color: orange;
+		border-radius: 25px;
+		position: relative;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	.theName {
+		position: absolute;
+  		bottom: 0;
+  		left: 0;
+		color: white;
+		padding-bottom: 20px;
+    	padding-left: 20px;
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
+	.theTPI {
+		position: absolute;
+  		bottom: 0;
+  		left: 0;
+		color: white;
+		padding-bottom: 10px;
+    	padding-left: 20px;
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	}
 </style>
 <p>Hey you guys.</p>
@@ -16,8 +38,9 @@
 
 	<div class="container">
 		{{#each myLocations}}
-			<div class="part">
-				{{this.name}}
+			<div class="part" style="background-image: url({{this.image}})">
+				<h1 class="theName">{{this.name}}</h1>
+				<p class="theTPI">TPI:</p>
 			</div>
 		{{/each}}
 	</div>
