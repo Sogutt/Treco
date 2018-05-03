@@ -4,19 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var createError = require('http-errors');
 var home = require('./routes/home');
 var about = require('./routes/about');
 var users = require('./routes/users');
-//var ist = require('./routes/ist);
-
-var app = express();
+var mongoose = require('mongoose');
 var mongo = require('mongodb');
+mongoose.connect('mongodb://localhost:27017/Treco-master');
+var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
-app.use(express.static('views/images')); 
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -29,8 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', home);
 app.use('/users', users);
 app.use('/about', about);
-//app.use('/ist', ist);
 
+app.use(express.static('views/images'));
 
 app.get('/', function(req,res){
 	res.render('home');
@@ -39,7 +37,7 @@ app.get('/', function(req,res){
 
 var request = require("request");
 
-app.post('/process', function(req, res){
+/*app.post('/process', function(req, res){
 		var dest = req.body.Dest;
 		if(dest == ''){
 			response = {
@@ -52,8 +50,8 @@ app.post('/process', function(req, res){
 		
 		console.log(response);
 		res.end(JSON.stringify(response)); //renders JSON object in result page
-		//how to make the api call?
-});
+		
+});*/
 
 //404 page
 app.use(function(req, res){
